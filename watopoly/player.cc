@@ -3,6 +3,8 @@ import <string>;
 
 using namespace std;
 
+const int TIMSLINEPOS = 10;
+
 export class Player{
     string name;
     char piece; 
@@ -10,13 +12,19 @@ export class Player{
     int position;
     int timsCups;
     bool inTimsLine;
-    int turnsInTimesLine;
+    int turnsInTimsLine;
     bool bankrupt;
     static inline int totalTimsCups = 0;
 
     public:
-    Player(string name, char piece, int cash = 1500, int position = 0, int timsCups = 0, bool inTimsLine = false, in turnsInTimesLine = 0);
+
+    // Constructor for new game
+    Player(const string& name, char piece);
     
+    // Constructor for saved game cuz it has more saved info
+    Player(const string& name, char piece, int cash, int position,
+        int timsCups, bool inTimsLine, int turnsInTimsLine);
+
     // Getter functions
     const string &getName() const;
     char getPiece() const;
@@ -26,18 +34,22 @@ export class Player{
     bool getInTimsLine() const;
     int getTurnsInTimsLine() const;
     bool getBankrupt() const;
+    static int getTotalTimsCups();
 
     // Setter functions
     void setPosition(int newPosition);
-    void recieveMoney(int amount);
+    void receiveMoney(int amount);
     bool payMoney(int amount); // False if player lacks cash
 
     // Cup usage/gainage
-    void recieveCup();
+    void receiveCup();
     bool useCup();
 
-    // Tims and whatnot functions
-    
+    // Functions that Player owns to do tims stuff
+    void enterTimsLine();
+    void recordFailedTimsRoll();
+    void leaveTimsLine();
 
+    // Needs to be implemented after board is made
     int calculateNetWorth(const Board& board) const;
 };

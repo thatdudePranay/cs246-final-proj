@@ -15,6 +15,6 @@ void Game::roll(int die1, int die2) {
 void nextTurn();
 void movePlayer(Player &player, int steps);
 void sendToTims(Player &player) {
-    
+
 }
 
