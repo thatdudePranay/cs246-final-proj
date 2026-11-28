@@ -15,6 +15,10 @@ Player::Player(const string& name, char piece, int cash, int position,
         totalTimsCups += timsCups;
     }
 
+Player::~Player() {
+    totalTimsCup -= timsCup;
+}
+
 const string &Player::getName() const {return name;}
 char Player::getPiece() const {return piece;}
 int Player::getCash() const {return cash;}
