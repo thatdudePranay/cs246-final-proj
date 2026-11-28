@@ -14,10 +14,10 @@ export class Game{
         Game(int playerCount);  
 
         // Big 5 are not needed, Game will never be moved/copied, destructor is default
-        Game(const &Game) = delete;
-        Game(&&Game) = delete;
-        Game& operator=(const &Game) = delete;
-        Game& operator=(&&Game) = delete;
+        Game(const Game& other) = delete;
+        Game(Game&& other) = delete;
+        Game& operator=(const Game& other) = delete;
+        Game& operator=(Game&& other) = delete;
         ~Game() = default; 
 
         void roll();
