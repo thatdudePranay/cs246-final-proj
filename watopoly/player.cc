@@ -25,6 +25,13 @@ export class Player{
     Player(const string& name, char piece, int cash, int position,
         int timsCups, bool inTimsLine, int turnsInTimsLine);
 
+    // Need custom destructor to decrement static totalTimsCup on destruction, also delete copy/move
+    ~Player();
+    Player(const Player&) = delete;
+    Player& operator=(const Player&) = delete;
+    Player(Player&&) = delete;
+    Player& operator=(Player&&) = delete;
+
     // Getter functions
     const string &getName() const;
     char getPiece() const;
